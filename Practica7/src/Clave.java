@@ -11,7 +11,6 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
 public class Clave {
-
 	public static void main(String[] args) {
 		try {
 			KeyGenerator kg = KeyGenerator.getInstance("AES");
@@ -22,14 +21,10 @@ public class Clave {
 			out.close();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
-
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-
 		} catch (IOException e) {
 			e.printStackTrace();
-
 		}
 	}
-		}
-
+}

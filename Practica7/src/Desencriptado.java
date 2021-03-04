@@ -11,7 +11,7 @@ public class Desencriptado {
 	public static void main(String[] args) {
 		try {
 			// RECUPERAMOS CLAVE SECRETA DEL FICHERO
-			ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\Users\\PC33\\eclipse-workspace\\PSP\\src\\PracticaEncriptacion\\clave.ken"));
+			ObjectInputStream oin = new ObjectInputStream(new FileInputStream("C:\\Users\\PC33\\git\\PSP\\Practica7\\src\\clave.ken"));
 			Key clavesecreta = (Key) oin.readObject();
 			oin.close();
 
@@ -20,12 +20,12 @@ public class Desencriptado {
 			c.init(Cipher.DECRYPT_MODE, clavesecreta);
 
 			// OBJETO CipherlnputStream CUYO CONTENIDO SE VA A DESCIFRAR
-			CipherInputStream in = new CipherInputStream(new FileInputStream("C:\\Users\\PC33\\eclipse-workspace\\PSP\\src\\PracticaEncriptacion\\FicheroPDF.Cifrado"), c);
+			CipherInputStream in = new CipherInputStream(new FileInputStream("C:\\Users\\PC33\\git\\PSP\\Practica7\\src\\Fichero.Cifrado"), c);
 			int tambloque = c.getBlockSize();
 			byte[] bytes = new byte[tambloque];
 
 			// FICHERO CON EL CONTENIDO DESCIFRADO QUE SE CREARÁ
-			FileOutputStream fileout = new FileOutputStream("C:\\Users\\PC33\\eclipse-workspace\\PSP\\\\src\\PracticaEncriptacion\\FICHEROdescifrado.pdf");
+			FileOutputStream fileout = new FileOutputStream("C:\\Users\\PC33\\git\\PSP\\Practica7\\src\\FICHEROdescifrado.pdf");
 
 			// LEEMOS BLOQUES DE BYTES DEL FICHERO cifrado
 			// Y LO VAMOS ESCRIBIENDO desencriptados al FileOutputStream
