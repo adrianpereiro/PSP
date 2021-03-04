@@ -1,5 +1,3 @@
-package PracticaEncriptacion;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,7 +17,7 @@ public class Clave {
 			KeyGenerator kg = KeyGenerator.getInstance("AES");
 			kg.init(128);
 			SecretKey clave = kg.generateKey();
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("C:\\Users\\PC33\\eclipse-workspace\\PSP\\src\\PracticaEncriptacion\\clave.ken"));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("C:\\Users\\PC33\\git\\PSP\\Practica7\\src\\clave.ken"));
 			out.writeObject(clave);
 			out.close();
 		} catch (NoSuchAlgorithmException e) {
