@@ -12,11 +12,10 @@ import javax.net.ssl.SSLSocket;
 public class ServidorSSL {
 
 	public static void main(String[] args) throws IOException {
-		System.setProperty("javax.net.ssl.keyStore", "D:\\Programacion\\PSP\\src\\Practica6\\AlmacenSSL");
-		System.setProperty("javax.net.ssl.keyStorePassword", "123456789");
+		System.setProperty("javax.net.ssl.keyStore", "C:\\Users\\PC33\\git\\PSP\\Practica6\\src\\AlmacenSSL");
+		System.setProperty("javax.net.ssl.keyStorePassword", "123456");
 		Scanner sc = new Scanner(System.in);
 		int puerto = 6000;
-		//Punto de entrada para la creación de ServerSSL
 		SSLServerSocketFactory sfact =(SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 		SSLServerSocket servidorSSL = null; 
 		SSLSocket clienteConectado = null;
@@ -24,24 +23,22 @@ public class ServidorSSL {
 		
 		int numeroClientes = 0;
 		while(numeroClientes <= 0) {
-		System.out.println("Indica cuantos clientes desea conectados a este SERVIDOR, porfavor ");
+		System.out.println("Clientes que se van a conectar a este Servidor ");
 		numeroClientes = sc.nextInt();
 		}
 		
-		System.out.println("Desea: "+numeroClientes+" clientes");
+		System.out.println(+numeroClientes+" clientes");
 		servidorSSL = (SSLServerSocket) sfact.createServerSocket(puerto);
 		for(int i= 1; i<=numeroClientes; i++) {
 			clienteConectado = (SSLSocket) servidorSSL.accept();
-			 //Envío saludo al cliente
 			flujoSalida = new DataOutputStream(clienteConectado.getOutputStream () ) ;
-			flujoSalida.writeUTF("Holaa Socket!! Eres el número "+i);
+			flujoSalida.writeUTF("Socket número: "+i);
 			flujoSalida.close ();
 			
 		}
 		clienteConectado.close ();
 		servidorSSL.close () ;
 		
-		//Datos de sesión
 		SSLSession session = ((SSLSocket) clienteConectado).getSession();
 		System.out.println("Host: "+session.getPeerHost());
 		System.out.println("Cifrado: " + session.getCipherSuite());
